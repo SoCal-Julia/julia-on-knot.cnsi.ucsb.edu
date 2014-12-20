@@ -70,9 +70,9 @@ Parallel processing can be done just as easily from a non-interactive job as wel
 PyCall
 ------
 
-If you compile a custom version of Python to use on knot, it will need to be compiled as a shared library in order to work with Julia using PyCall.jl.  To do this, pass the `--enable-shared` flag to `./configure` when building Python.
+If you compile a custom version of Python to use on knot, it will need to be compiled as a shared library in order to work with Julia using [PyCall.jl](https://github.com/stevengj/PyCall.jl).  To do this, pass the `--enable-shared` flag to `./configure` when building Python.
 
 Acknowledgements
 ----------------
 
-Thanks to Darwin Darakananda and the SoCal Julia Meetup group for helping me better understand the non-uniform architecture issue.
+Thanks to Darwin Darakananda and the [SoCal Julia Meetup group](http://www.meetup.com/Southern-California-Julia-Users/) for helping me better understand the non-uniform architecture issue.

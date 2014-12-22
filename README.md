@@ -45,7 +45,7 @@ Re-login, and run julia again.
 Open issues
 -----------
 
-The default build of Julia seems to intermittently segfault on exit unless it is run with the environment variable `OPENBLAS_NUM_THREADS=1`.  This can be set in `.bashrc`.
+The default build of Julia seems to intermittently segfault on exit on knot unless it is run with the environment variable `OPENBLAS_NUM_THREADS=1`.  This can be set in `.bashrc`.
 
 It is also possible to build Julia using icc and MKL, but when Julia is built this way on knot, it fails any time it calls a subprocess.
 

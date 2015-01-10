@@ -7,7 +7,10 @@ Building Julia on knot.cnsi.ucsb.edu
 
 This brief guide is designed to help users get Julia code running on knot.
 
-TL;DR: put `MARCH=nehalem` in `Make.user`.  Use `OPENBLAS_NUM_THREADS=1` at runtime to prevent an intermittent segfault on exit.
+TL;DR
+-----
+
+Put `MARCH=nehalem` in `Make.user`.  Use `OPENBLAS_NUM_THREADS=1` at runtime to prevent an intermittent segfault on exit.
 
 Build instructions
 ------------------

@@ -10,7 +10,7 @@ This brief guide is designed to help users get Julia code running on knot.
 TL;DR
 -----
 
-Put `MARCH=nehalem` in `Make.user`.  Use `OPENBLAS_NUM_THREADS=1` at runtime to prevent an intermittent segfault on exit.
+Compile on the head node, and put `MARCH=nehalem` in `Make.user`.  Use `OPENBLAS_NUM_THREADS=1` at runtime to prevent an intermittent segfault on exit.
 
 Build instructions
 ------------------

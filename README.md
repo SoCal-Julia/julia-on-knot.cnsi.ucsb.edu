@@ -19,15 +19,15 @@ It's best to compile on the head node, since it has network access, thus allowin
 
 I am personally using custom (more recent) compiles of gcc, Python, etc, so if anything below does not work flawlessly, this may be the issue.
 
-Anyway, we start by cloning the source code and checking out the tag of the latest release (at the time of writing, `v0.3.5`).  Before this, you will want to get into a parent directory where you'd like the Julia installation to live.  Once you build it, you cannot change this directory without rebuilding (or so it seems).
+Anyway, we start by cloning the source code and checking out the tag of the latest release (at the time of writing, `v0.3.6`).  Before this, you will want to get into a parent directory where you'd like the Julia installation to live.  Once you build it, you cannot change this directory without rebuilding (or so it seems).
 
     $ mkdir -p ~/julia
     $ cd ~/julia
-    $ git clone --depth 50 https://github.com/JuliaLang/julia.git v0.3.5 -b v0.3.5
-    $ cd v0.3.5
-    $ git checkout v0.3.5
+    $ git clone --depth 50 https://github.com/JuliaLang/julia.git v0.3.6 -b v0.3.6
+    $ cd v0.3.6
+    $ git checkout v0.3.6
 
-(Actually, the last step is redundant, but the `git-1.7.1` on knot is old enough that the `git clone` line will say `warning: Remote branch v0.3.5 not found in upstream origin, using HEAD instead`, so it's necessary to checkout the tag explicitly.  I'm assuming this is because `v0.3.5` is a tag, not a branch, but the same command works on later versions of `git`.)
+(Actually, the last step is redundant, but the `git-1.7.1` on knot is old enough that the `git clone` line will say `warning: Remote branch v0.3.6 not found in upstream origin, using HEAD instead`, so it's necessary to checkout the tag explicitly.  I'm assuming this is because `v0.3.6` is a tag, not a branch, but the same command works on later versions of `git`.)
 
 On knot, not every CPU has the same instruction set, and this can cause the error "Target architecture mismatch" because Julia by default builds code that will only work on the architecture on which it was compiled.  On knot, the head node contains Westmere processors, but the big memory nodes contain X7550 chips, which are based on the older Nehalem microarchitecture.  Some of the newer nodes even contain Sandy Bridge processors.  To deal with this variation, we compile all code to target the lowest common denominator:
 

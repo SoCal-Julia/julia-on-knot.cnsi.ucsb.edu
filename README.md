@@ -22,7 +22,7 @@ We continue by cloning the source code and checking out the tag of the latest re
 
     $ mkdir -p ~/julia
     $ cd ~/julia
-    $ git clone --depth 50 https://github.com/JuliaLang/julia.git v0.3.9 -b v0.3.9
+    $ git clone https://github.com/JuliaLang/julia.git v0.3.9 -b v0.3.9
     $ cd v0.3.9
     $ git checkout v0.3.9
 

@@ -12,7 +12,7 @@ Build instructions
 
 It's best to **compile on the head node**, since it has network access, thus allowing Julia to fetch its dependencies automatically during a build.  Also, the most recent version of icc is currently only installed there.
 
-I am personally using custom (more recent) compiles of gcc, Python, etc, so if anything below does not work flawlessly, this may be the issue.
+I am personally using custom (more recent) compiles of git, gcc, Python, etc, so if anything below does not work flawlessly, this may be the issue.
 
 We will plan to build using icc/mkl (see below for a note about compiling with gcc and OpenBLAS).  The first step is to import some environment variables:
 
@@ -26,7 +26,7 @@ We continue by cloning the source code and checking out the tag of the latest re
     $ cd v0.3.10
     $ git checkout v0.3.10
 
-(Actually, the last step is redundant, but the `git-1.7.1` on knot is old enough that the `git clone` line will say `warning: Remote branch v0.3.10 not found in upstream origin, using HEAD instead`, so it's necessary to checkout the tag explicitly.  I'm assuming this is because `v0.3.10` is a tag, not a branch, but the same command works on later versions of `git`.)
+(Actually, the last step is redundant, but the `git-1.7.1` on knot is old enough that the `git clone` line will say `warning: Remote branch v0.3.10 not found in upstream origin, using HEAD instead`, so it's necessary to checkout the tag explicitly.  I'm assuming this is because `v0.3.10` is a tag, not a branch, but the same command works on later versions of `git`.  On the other hand, Julia technically requires `git-1.7.3` or later, so you really should be using this instead of the stock `git` on knot.)
 
 On knot, not every CPU has the same instruction set, and this can cause the error "Target architecture mismatch" because Julia by default builds code that will only work on the architecture on which it was compiled.  On knot, the head node contains Westmere processors, but the big memory nodes contain X7550 chips, which are based on the older Nehalem microarchitecture.  Some of the newer nodes even contain Sandy Bridge processors.
 

@@ -18,21 +18,21 @@ We will plan to build using icc/mkl (see below for a note about compiling with g
 
     $ source /opt/intel/composer_xe_2015/bin/compilervars.sh intel64
 
-We continue by cloning the source code and checking out the tag of the latest release (at the time of writing, `v0.3.10`).  Before this, you will want to get into a parent directory where you'd like the Julia installation to live.  Once you build it, you cannot change this directory without rebuilding (or so it seems).  Also, it is recommended to start from a fresh clone of the source repository.
+We continue by cloning the source code and checking out the tag of the latest release (at the time of writing, `v0.4.2`).  Before this, you will want to get into a parent directory where you'd like the Julia installation to live.  Once you build it, you cannot change this directory without rebuilding (or so it seems).  Also, it is recommended to start from a fresh clone of the source repository.
 
     $ mkdir -p ~/julia
     $ cd ~/julia
-    $ git clone https://github.com/JuliaLang/julia.git v0.3.10 -b v0.3.10
-    $ cd v0.3.10
-    $ git checkout v0.3.10
+    $ git clone https://github.com/JuliaLang/julia.git v0.4.2 -b v0.4.2
+    $ cd v0.4.2
+    $ git checkout v0.4.2
 
-(Actually, the last step is redundant, but the `git-1.7.1` on knot is old enough that the `git clone` line will say `warning: Remote branch v0.3.10 not found in upstream origin, using HEAD instead`, so it's necessary to checkout the tag explicitly.  I'm assuming this is because `v0.3.10` is a tag, not a branch, but the same command works on later versions of `git`.  On the other hand, Julia technically requires `git-1.7.3` or later, so you really should be using this instead of the stock `git` on knot.)
+(Actually, the last step is redundant, but the `git-1.7.1` on knot is old enough that the `git clone` line will say `warning: Remote branch v0.4.2 not found in upstream origin, using HEAD instead`, so it's necessary to checkout the tag explicitly.  I'm assuming this is because `v0.4.2` is a tag, not a branch, but the same command works on later versions of `git`.  On the other hand, Julia technically requires `git-1.7.3` or later, so you really should be using this instead of the stock `git` on knot.)
 
 On knot, not every CPU has the same instruction set, and this can cause the error "Target architecture mismatch" because Julia by default builds code that will only work on the architecture on which it was compiled.  On knot, the head node contains Westmere processors, but the big memory nodes contain X7550 chips, which are based on the older Nehalem microarchitecture.  Some of the newer nodes even contain Sandy Bridge processors.
 
 To deal with this variation, we compile all code to target the lowest common denominator by specifying `JULIA_CPU_TARGET = nehalem` in `Make.user`.  For a full list of architecture options, see https://gcc.gnu.org/onlinedocs/gcc-4.9.2/gcc/i386-and-x86-64-Options.html#i386-and-x86-64-Options
 
-Here's the full `Make.user` file which we put in the `v0.3.10` directory:
+Here's the full `Make.user` file which we put in the `v0.4.2` directory:
 
     JULIA_CPU_TARGET = nehalem
 
